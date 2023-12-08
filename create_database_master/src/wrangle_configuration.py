@@ -101,7 +101,7 @@
             #36 recieved date                                     #
             #37 failsafe                                          #
 """
-#from nis import match
+from nis import match
 
 
 def station_name(master_database_list, database_list_index, name):
@@ -340,11 +340,11 @@ def device_proof(master_database_list, database_list_index, master_instrument_li
     TODO need to fix this device type is a number to a table that has a list of devices
     """
 
-    # match master_instrument_list.iloc[instrument_list_index,31]:
-    # case '':
-    #     master_database_list.iat[database_list_index, 14] = '+/- 2.5%'
-    # case '':
-    #     print()
+    match master_instrument_list.iloc[instrument_list_index,31]:
+        case '':
+            master_database_list.iat[database_list_index, 14] = '+/- 2.5%'
+        case '':
+            print()
 
 
 

@@ -22,9 +22,7 @@ def read_workbook(filename, dropNum, headerNum):
             return df
         else:
            df = df.drop(dropNum)
-
-
-        return df2
+        return df
 
     except FileNotFoundError:
         print(f"File '{filename}' not found.")
