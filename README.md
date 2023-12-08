@@ -15,7 +15,7 @@ The program will create new records in the second workbook if there is a matchin
 If there is a matching record, that record will be altered in the second workbook using
 various data manipulation functions, concat, conditional checks and so on.
 
-Included in the project are example .xlxs files with sample data; the code will produce a file called generated.xlxs from
+Included in the project are example .xlxs files with sample data; the code will produce a file called generated_database.xlxs from
 two files instrument_master_shortList.xlsx, which is a spreadsheet with several industrial instrumentation devices with related information. The database_master_shortList.xlsx is the spreadsheet with the headers and datatypes the database requires.
 
 In this case, there was already some information in the database_master file, and the instrument_master was a newer version so that the resultant file would have the most up to date informtion from the instrument master and some information preserved from the database master.
