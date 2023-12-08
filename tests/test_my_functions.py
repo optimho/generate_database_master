@@ -1,8 +1,5 @@
 import pytest
 import myfunctions.myfunctions as mf
-import create_database_master.wrangle_database_master as wd
-import create_database_master.excel_io_dataframe as xl
-
 
 
 def test_add():

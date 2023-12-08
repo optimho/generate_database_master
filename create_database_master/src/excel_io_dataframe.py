@@ -1,7 +1,7 @@
 " Open a excel file and converts it to a Pandas dataframe "
 
 import pandas as pd
-import numpy as np
+import os
 
 def read_workbook(filename, dropNum, headerNum):
     try:
@@ -34,6 +34,14 @@ def create_excel_from_dataframe(df, filename):
     try:
         # Export DataFrame to Excel workbook
         df.to_excel(filename, index=True)
-        print(f"Excel file '{filename}' created successfully.")
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print()
+        print()
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print(f"    Excel file '{filename}' created successfully.")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print(f"        An error occurred: {str(e)}")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")

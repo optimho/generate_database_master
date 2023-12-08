@@ -22,8 +22,9 @@ In this case, there was already some information in the database_master file, an
 
 instrument_master_shortList.xlsx and database_master_shortList.xlsx are copies of database_master and instrument_master and have less records for testing.
 
-The program also has a serries of pytest test functions and is an example of creating fixtures and pytests.
+The program also has a series of pytest test functions and is an example of creating fixtures and pytests.
 
+Run/execute the generate_database_master.py file to run the program.
 
 
 

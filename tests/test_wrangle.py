@@ -1,7 +1,7 @@
 import pytest
 
-import create_database_master.excel_io_dataframe as xl
-import create_database_master.wrangle_database_master as wr
+import create_database_master.src.excel_io_dataframe as xl
+import create_database_master.src.wrangle_database_master as wr
 @pytest.fixture
 def database_data():
     #read instrument Database lists|/

@@ -31,10 +31,7 @@ Put the sheets with the names of:
 
 """
 
-import numpy as np
-import pandas as pd
-import excel_io_dataframe as xl
-import wrangle_database_master as wr
+from create_database_master.src import excel_io_dataframe as xl, wrangle_database_master as wr
 
 # read instrument Database lists|
 # TODO select for full list

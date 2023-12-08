@@ -4,11 +4,12 @@ This is used to create an Excel spreadsheet to import into an access database
 for contact energys' device database.
 
 """
-from datetime import datetime
 
 import numpy as np
 import pandas as pd
-import wrangle_configuration as connect
+from create_database_master.src import wrangle_configuration as connect
+
+
 def wrangle_database_list(master_list: pd, database_list: pd, version: str):
     #Takes the new instrument lists, checks the exsisting database lists
     #compiles a new lists with data from both lists and presents the data in a format that
