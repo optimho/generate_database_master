@@ -58,7 +58,7 @@ version: str = '7.6'
 # Wrangle  data
 
 xl.create_excel_from_dataframe(wr.wrangle_database_list(instrument_master_list_df,
-                                                        instrument_data_list_df, version=''), '../data/test.xlsx')
+                                                        instrument_data_list_df, version=''), '../data/generated_database.xlsx')
 
 if instrument_master_list_df is not None:
     print("Dataframe contents:")
