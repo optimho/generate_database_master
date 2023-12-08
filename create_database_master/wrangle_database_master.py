@@ -4,10 +4,11 @@ This is used to create an Excel spreadsheet to import into an access database
 for contact energys' device database.
 
 """
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
-
+import wrangle_configuration as connect
 def wrangle_database_list(master_list: pd, database_list: pd, version: str):
     #Takes the new instrument lists, checks the exsisting database lists
     #compiles a new lists with data from both lists and presents the data in a format that
@@ -26,29 +27,82 @@ def wrangle_database_list(master_list: pd, database_list: pd, version: str):
             ####  TODO _ NOTE {The number at the end indictes the column                            }##################
             ####  TODO _ NOTE {of the cells in the Dataframe to compare                             }##################
 
-            kks_number_instrument_list = master_instrument_list.iloc[instrument_list_index,10]
-            kks_number_database_list = master_database_list.iloc[database_list_index,0]
+
+            kks_number_instrument_list = master_instrument_list.iloc[instrument_list_index, 10]
+            kks_number_database_list = master_database_list.iloc[database_list_index, 15]
 
             #If you find an instrument that is listed in both lists update the database lists
             #with as much data from the new instrument lists
             if kks_number_instrument_list==kks_number_database_list:
                 device_is_listed = True
 
-                # #make a series of the row of data being checked from both dataframes
-                # temp_database: np = master_database_list.loc[database_list_index+1]
-                # temp_master: np = master_instrument_list.loc[instrument_list_index+1]
-                #
-                # ###### WRANGLE DATA HERE ###########  TODO      #####################################################
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
-                # temp_database['Station'] = temp_master['PLANT']
+            ######## WRANGLE DATA HERE ###########  TODO      ###########################################
+            #
+                # Station Name
+                connect.station_name(master_database_list, database_list_index,
+                                     name="Tauhara B Steamfield")
+
+                # System
+                connect.system_name(master_database_list, database_list_index, master_instrument_list,
+                                    instrument_list_index)
+
+                # Tag
+                connect.tag(master_database_list, database_list_index, master_instrument_list,
+                                    instrument_list_index)
+
+                # Point name
+                connect.point_name(master_database_list, database_list_index, master_instrument_list,
+                                    instrument_list_index)
+
+                # Function
+                connect.function(master_database_list, database_list_index, master_instrument_list,
+                                    instrument_list_index)
+
+                # Type
+                master_database_list.iat[database_list_index, 5] = \
+                    master_instrument_list.iloc[instrument_list_index, 34]
+
+                # criticality = ? not yet implemented
+                connect.criticality(master_database_list, database_list_index, master_instrument_list,
+                                 instrument_list_index, val="")
+
+                # Resource Consent = ? not yet implemented
+                connect.resource_consent(master_database_list, database_list_index, master_instrument_list,
+                                    instrument_list_index, val="")
+
+                #PCPR = ? not yet implemented
+                connect.pcpr(master_database_list, database_list_index, master_instrument_list,
+                                         instrument_list_index, val="")
+
+                #KPI = ? not implemented yet
+                connect.kpi(master_database_list, database_list_index, master_instrument_list,
+                                         instrument_list_index, val="")
+
+                #Nominal operating value
+                connect.nominal_operating_value(master_database_list, database_list_index, master_instrument_list,
+                            instrument_list_index)
+
+                #setting range
+                connect.setting_range(master_database_list, database_list_index, master_instrument_list,
+                            instrument_list_index)
+
+                #Device range
+                connect.device_range(master_database_list, database_list_index, master_instrument_list,
+                                      instrument_list_index)
+
+                #Device Type TODO: this needs work
+                connect.device_type(master_database_list, database_list_index, master_instrument_list,
+                                     instrument_list_index)
+
+
+
+
+                # date of entry
+                master_database_list.iat[database_list_index, 48] = \
+                    ('8/12/2023')
+
+                #master_database_list.iat[database_list_index, 49] = master_instrument_list.iat[instrument_list_index, 1]
+
                 #
                 # ######################################################################################################
                 # # TODO update the updated record
@@ -83,4 +137,4 @@ def wrangle_database_list(master_list: pd, database_list: pd, version: str):
 
 
 
-
+    return master_database_list

@@ -10,3 +10,7 @@ def divide(numberOne, numberTwo):
         raise ValueError
     return numberOne/numberTwo
 
+def concatStr(strOne: str, strTwo: str):
+    space = ' '
+    return f'{strOne.lower()} {strTwo.lower()}'
+

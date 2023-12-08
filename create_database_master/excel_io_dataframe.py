@@ -1,7 +1,7 @@
 " Open a excel file and converts it to a Pandas dataframe "
 
 import pandas as pd
-
+import numpy as np
 
 def read_workbook(filename, dropNum, headerNum):
     try:
@@ -11,11 +11,11 @@ def read_workbook(filename, dropNum, headerNum):
         # Assuming there's only one sheet in the workbook
         sheet_name = xl.sheet_names[0]
 
-        # Read the sheet into a pandas DataFrame
+        # Read the sheet into a pandas DataFrame and change NANs to empty strings
         if (headerNum == -1):
-            df = pd.read_excel(filename, sheet_name=sheet_name)
+            df = pd.read_excel(filename, sheet_name=sheet_name).fillna('')
         else:
-            df = pd.read_excel(filename, sheet_name=sheet_name, header=headerNum)
+            df = pd.read_excel(filename, sheet_name=sheet_name, header=headerNum).fillna('')
 
         # Assuming dataframe is your Pandas DataFrame and row_index is the index of the row you want to drop
         if dropNum == -1:
@@ -23,7 +23,8 @@ def read_workbook(filename, dropNum, headerNum):
         else:
            df = df.drop(dropNum)
 
-        return df
+
+        return df2
 
     except FileNotFoundError:
         print(f"File '{filename}' not found.")
